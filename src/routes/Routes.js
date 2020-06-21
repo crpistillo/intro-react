@@ -10,14 +10,19 @@ class Routes extends Component {
         return (
             //TODO: aca dentro puede haber tantas rutas como queramos
             //TODO: cada componente routeado aca matchea con un controller
+
+            //TODO: Si ya tengo un token
             <Router key="router">
                 <Route exact path={"/"} render={props => localStorage.getItem("token") ?
+                    //TODO: Redirijo al home
                     <Redirect to={{pathname: "/home"}}/> :
+                    //TODO: Sino te dejo acceder al login
                     <Login {...props}/>
                 }/>
                 <PrivateRoute exact path={"/home"} component={Home}/>
                 <PrivateRoute exact path={"/profile"} component={Profile}/>
             </Router>
+            //TODO: Ahora la ruta de home y de profile son privadas: sino estoy loggeado no voy a poder acceder
         )
     }
 
