@@ -6,6 +6,8 @@ import "../App.css"
 class Routes extends Component {
     render() {
         return (
+            //TODO: aca dentro puede haber tantas rutas como queramos
+            //TODO: cada componente routeado aca matchea con un controller
             <Router key="router">
                 <Route exact path={"/home"} component={Home}/>
             </Router>

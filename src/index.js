@@ -5,10 +5,14 @@ import App from './routes/Routes';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
+    //Solo renderizamos el componente App
     <React.StrictMode>
-        <App/>
+        <App />
     </React.StrictMode>,
-    document.getElementById('root')
+    document.getElementById('root') //TODO: interaccion de JS con el DOM real
+    //TODO: el id 'root' es el id que esta en el index.html
+    //TODO: Todos los componentes que vamos renderizando se cargan acá adentro
+
 );
 
 // If you want your app to work offline and load faster, you can change
