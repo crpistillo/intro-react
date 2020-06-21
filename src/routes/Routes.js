@@ -7,6 +7,8 @@ import {Login} from "../controllers/Login";
 class Routes extends Component {
     render() {
         return (
+            //TODO: aca dentro puede haber tantas rutas como queramos
+            //TODO: cada componente routeado aca matchea con un controller
             <Router key="router">
                 <Route exact path={"/"} component={Login}/>
                 <Route exact path={"/home"} component={Home}/>
@@ -14,7 +16,6 @@ class Routes extends Component {
             </Router>
         )
     }
-
 
 }
 
