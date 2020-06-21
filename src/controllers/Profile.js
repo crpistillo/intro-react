@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {app} from "../app/app";
+import {app} from "app/app";
 
 //TODO: Para poder realizar una llamada a una API
 

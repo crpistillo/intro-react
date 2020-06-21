@@ -1,7 +1,6 @@
 import React from 'react';
 import {Redirect, Route} from 'react-router-dom';
-
-import {app} from "../app/app";
+import {app} from "app/app";
 
 //TODO: Recibe el componente que quiero renderizar
 export const PrivateRoute = ({component: Component, ...rest}) => {

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
-import {app} from "../app/app";
-import "../assets/css/Login.css";
+import {app} from "app/app";
+import {Button} from "components/common/Button";
+import "assets/css/Login.css";
 
 export class Login extends Component {
     constructor(props) {
@@ -26,7 +27,7 @@ export class Login extends Component {
                 <div className="form">
                     <input name="email" type="email" placeholder="Email" onChange={this.handleInputChange}/>
                     <input name="password" type="password" placeholder="Password" onChange={this.handleInputChange}/>
-                    <button onClick={this.handleSubmit}>INGRESAR</button>
+                    <Button onClick={this.handleSubmit} text="INGRESAR"/>
                     <p className="formError">{this.state.errorMessage}</p>
                 </div>
             </div>
