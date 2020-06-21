@@ -8,6 +8,8 @@ import {PrivateRoute} from "./PrivateRoute";
 class Routes extends Component {
     render() {
         return (
+            //TODO: aca dentro puede haber tantas rutas como queramos
+            //TODO: cada componente routeado aca matchea con un controller
             <Router key="router">
                 <Route exact path={"/"} render={props => localStorage.getItem("token") ?
                     <Redirect to={{pathname: "/home"}}/> :
@@ -18,7 +20,6 @@ class Routes extends Component {
             </Router>
         )
     }
-
 
 }
 
