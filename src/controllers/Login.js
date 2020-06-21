@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {getSetting} from '../settings';
+import {app} from "../app/app";
 import "../assets/css/Login.css";
 
 export class Login extends Component {
@@ -7,8 +7,11 @@ export class Login extends Component {
         super(props);
 
         this.state = {
-            email: '',
-            password: ''
+            formData: {
+                email: '',
+                password: ''
+            },
+            errorMessage: ''
         };
 
         this.handleInputChange = this.handleInputChange.bind(this);
@@ -24,6 +27,7 @@ export class Login extends Component {
                     <input name="email" type="email" placeholder="Email" onChange={this.handleInputChange}/>
                     <input name="password" type="password" placeholder="Password" onChange={this.handleInputChange}/>
                     <button onClick={this.handleSubmit}>INGRESAR</button>
+                    <p className="formError">{this.state.errorMessage}</p>
                 </div>
             </div>
         )
@@ -32,7 +36,9 @@ export class Login extends Component {
     //TODO: Para manejar lo que ingresa el usuario. Se ejecuta cada vez que el usuario presiona una tecla
     handleInputChange(event) {
         const input = event.target; //TODO: target = elemento que fue clickeado al ingresar datos
-        this.setState({[input.name]: input.value}); //TODO: email, psw
+        let formData = this.state.formData;
+        formData[input.name] = input.value; //TODO: email, psw
+        this.setState({formData: formData});
     }
 
     //TODO: Guardo el token en el navegador (a traves de local storage) y redirecciono al home
@@ -40,21 +46,21 @@ export class Login extends Component {
         //TODO: El local storage es una especie de almacenamiento que nos da el navegador
         //TODO: localStorage: vive hasta que lo borres
         //TODO: sessionStorage: se muere con la sesion de usuario
-        localStorage.setItem("token", response.token); //TODO: solo acepta strings
-        this.props.history.push("/home"); //TODO: A todas las rutas se les inyecto este objeto "history" que sirve
-                                          //TODO: para navegar
+        //localStorage.setItem("token", response.token); //TODO: solo acepta strings
+        //this.props.history.push("/home"); 
+
+        if (response.hasError()) {
+            this.setState({errorMessage: response.errorMessages()});
+        } else {
+            app.loginUser(response.content().token);
+            this.props.history.push(app.routes().home); //TODO: A todas las rutas se les inyecto este objeto "history" que sirve
+                                                        //TODO: para navegar
+        }
+
     }
 
     //TODO: Es lo que se corre cuando el usuario de click al boton "Ingresar"
     handleSubmit() {
-        const requestConfig = {
-            method: 'POST',
-            body: JSON.stringify(this.state),
-            headers: {'Content-Type': 'application/json'}
-        };
-
-        //TODO: Hago un post al login de mi api publica
-        const url = getSetting('API_URL') + "/login";
-        fetch(url, requestConfig).then(response => response.json()).then(this.handleApiResponse);
+        app.apiClient().login(this.state.formData, this.handleApiResponse);
     }
 }
