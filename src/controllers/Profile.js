@@ -54,6 +54,7 @@ handleApiResponse(response) {
         //TODO: el 'this' de aca no es el componente (la clase), sino el this dentro de este scope/contexto de
         //TODO: esta funcion, sino del modulo que la este ejecutando
 
-        app.apiClient().getProfile(this.handleApiResponse);
+        app.apiClient().getProfile(this.handleApiResponse); //TODO: aprovecho a usar la app para obtener el cliente
+        // TODO: que tiene toda la interfaz de los msjes que quiero usar para pegarle a mi api
     }
 }

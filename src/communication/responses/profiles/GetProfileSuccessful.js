@@ -1,6 +1,7 @@
 import {SuccessfulApiResponse} from "../generalResponses/SuccessfulApiResponse.js";
 
 export class GetProfileSuccessful extends SuccessfulApiResponse {
+    //TODO: Formato de la respuesta default cuando uso la Fake Api
     static defaultResponse() {
         return {
             "data": {

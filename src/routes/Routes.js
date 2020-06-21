@@ -14,8 +14,8 @@ class Routes extends Component {
 
             //TODO: Si ya tengo un token
             <Router key="router">
-                      //TODO: Redirijo al home
                 <Route exact path={app.routes().login} render={props => localStorage.getItem("token") ?
+                    //TODO: Redirijo al home
                     <Redirect to={{pathname: app.routes().home}}/> :
                     //TODO: Sino te dejo acceder al login
                     <Login {...props}/>

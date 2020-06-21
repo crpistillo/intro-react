@@ -52,7 +52,7 @@ export class Login extends Component {
         if (response.hasError()) {
             this.setState({errorMessage: response.errorMessages()});
         } else {
-            app.loginUser(response.content().token);
+            app.loginUser(response.content().token); //TODO: Le aviso a app que se logeo para que haga lo que tenga que hacer
             this.props.history.push(app.routes().home); //TODO: A todas las rutas se les inyecto este objeto "history" que sirve
                                                         //TODO: para navegar
         }
