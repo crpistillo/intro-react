@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {getSetting} from "../settings";
 
 //TODO: Para poder realizar una llamada a una API
 
@@ -47,7 +48,8 @@ export class Profile extends Component {
         //TODO: con una response http. El .json de la response tambien devuelve Promise
         //TODO: then recibe una funcion: callback
 
-        fetch("https://reqres.in/api/users/2").then(response => response.json()).then(this.handleApiResponse);
+        const url = getSetting('API_URL') + "/users/2";
+        fetch(url).then(response => response.json()).then(this.handleApiResponse);
         //TODO: el 'this' de aca no es el componente (la clase), sino el this dentro de este scope/contexto de
         //TODO: esta funcion, sino del modulo que la este ejecutando
     }
