@@ -1,6 +1,8 @@
 import {Requester} from "./Requester.js";
 import fakeRequesterExpectedResponses from "../mocks/fakeRequesterExpectedResponses.js";
 
+//TODO: Simula hacer un pedido a una API (a partir de una configuracion), pero no lo hace
+
 class FakeRequester extends Requester {
     constructor(expectedResponses) {
         super();

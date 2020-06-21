@@ -20,6 +20,7 @@ class ApiClient {
         return onResponse(response);
     }
 
+    //TODO: endpoints usados
     login(data, onResponse) {
         return this._requester.call({
             endpoint: new LoginEndpoint(),

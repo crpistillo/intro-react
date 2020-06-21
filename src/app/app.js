@@ -16,6 +16,8 @@ class App {
         return this._apiClient;
     }
 
+    //TODO: define un diccionario con clave:  valor, cuyo valor es la url final
+    //TODO: me sirve para centralizar las url en un solo lugar
     routes() {
         return {
             login: '/',
@@ -24,6 +26,7 @@ class App {
         }
     }
 
+    //TODO: Encapsula el concepto de guardar el token en el localStorage
     loginUser(token) {
         localStorage.setItem("token", token);
     }
@@ -33,12 +36,13 @@ class App {
     }
 
     _setUpApiClient() {
-        const requester = this._setUpRequester();
-        this._apiClient = new ApiClient(requester);
+        const requester = this._setUpRequester(); //TODO: da de alta un requester
+        this._apiClient = new ApiClient(requester); //TODO: se lo pasa como parametro al API cliente que es
+                                                    // quien va a realizar los pedidos
     }
 
     _setUpRequester() {
-        const usingFakeApi = getSetting("USING_FAKE_API");
+        const usingFakeApi = getSetting("USING_FAKE_API"); //TODO: leo la venv
         if (usingFakeApi) {
             return new FakeRequester();
         }
@@ -48,4 +52,5 @@ class App {
     }
 }
 
+//TODO: defino un objeto y lo exporto como singleton (accedo desde todos lados a la misma instancia de objeto)
 export let app = new App();

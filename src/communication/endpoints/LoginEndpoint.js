@@ -15,6 +15,7 @@ export class LoginEndpoint extends Endpoint {
         return 'POST'
     }
 
+    //TODO: Si para pegarle al endpoint necesito el token o no
     needsAuthorization() {
         return false;
     }

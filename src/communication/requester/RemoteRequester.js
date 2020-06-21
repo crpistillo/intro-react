@@ -8,12 +8,13 @@ class RemoteRequester extends Requester {
     }
 
     call({endpoint, onResponse, data = undefined}) {
-        const request = this._buildRequest(endpoint, data);
+        const request = this._buildRequest(endpoint, data); //TODO: armo la request en base a los headers
         let url = endpoint.url();
         if (endpoint.method() === 'GET' && data) {
             url += "?" + this._dataToQueryString(data);
         }
 
+        //TODO: termino haciendo el fetch aca
         return fetch(this._baseUrl + url, request).then(result => result.json())
             .then(jsonResponse => {
                 return onResponse(this._buildResponse(jsonResponse, endpoint));
