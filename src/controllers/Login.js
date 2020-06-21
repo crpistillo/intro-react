@@ -31,6 +31,7 @@ export class Login extends Component {
                     <p className="formError">{this.state.errorMessage}</p>
                 </div>
             </div>
+            //TODO: Si le saco el text=.. al Button empiezan a funcionar las default props
         )
     }
 
